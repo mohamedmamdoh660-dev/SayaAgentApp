@@ -1,0 +1,125 @@
+/* Custom styles for react-international-phone that adapt to theme */
+
+/* CSS variables for phone input - integrating with shadcn UI */
+:root {
+  --react-international-phone-border-radius: var(--radius-md);
+  --react-international-phone-border-color: hsl(var(--input));
+  --react-international-phone-background-color: hsl(var(--background));
+  --react-international-phone-text-color: hsl(var(--foreground));
+  --react-international-phone-selected-dropdown-item-background-color: hsl(
+    var(--accent)
+  );
+  --react-international-phone-selected-dropdown-item-text-color: hsl(
+    var(--accent-foreground)
+  );
+  --react-international-phone-country-selector-background-color-hover: hsl(
+    var(--accent)
+  );
+}
+
+/* Light mode styles (default) */
+.react-international-phone-input {
+  background-color: var(--react-international-phone-background-color);
+  color: var(--react-international-phone-text-color);
+  border-color: var(--react-international-phone-border-color);
+  border-radius: var(--react-international-phone-border-radius);
+}
+
+.react-international-phone-country-selector-button {
+  background-color: var(--react-international-phone-background-color);
+  color: var(--react-international-phone-text-color);
+  border-color: var(--react-international-phone-border-color);
+  border-radius: var(--react-international-phone-border-radius);
+}
+
+.react-international-phone-country-selector-dropdown {
+  background-color: var(--react-international-phone-background-color);
+  color: var(--react-international-phone-text-color);
+  border-color: var(--react-international-phone-border-color);
+  border-radius: var(--react-international-phone-border-radius);
+}
+
+.react-international-phone-country-selector-dropdown-item {
+  background-color: var(--react-international-phone-background-color);
+  color: var(--react-international-phone-text-color);
+}
+
+.react-international-phone-country-selector-dropdown-item:hover,
+.react-international-phone-country-selector-dropdown-item-highlighted {
+  background-color: var(
+    --react-international-phone-country-selector-background-color-hover
+  );
+  color: var(--react-international-phone-selected-dropdown-item-text-color);
+}
+
+/* Light mode specific overrides */
+:root {
+  --react-international-phone-background-color: #ffffff;
+  --react-international-phone-text-color: #0f172a;
+  --react-international-phone-border-color: #d8d3d4;
+  --react-international-phone-selected-dropdown-item-background-color: #f1f5f9;
+  --react-international-phone-selected-dropdown-item-text-color: #0f172a;
+  --react-international-phone-country-selector-background-color-hover: #f1f5f9;
+}
+
+/* Dark mode specific overrides */
+.dark {
+  --react-international-phone-background-color: #18181b;
+  --react-international-phone-text-color: #e5e5e5;
+  --react-international-phone-border-color: #27272a;
+  --react-international-phone-selected-dropdown-item-background-color: #202023;
+  --react-international-phone-selected-dropdown-item-text-color: #ffffff;
+  --react-international-phone-country-selector-background-color-hover: #202023;
+}
+
+/* Input field styles - matching shadcn UI input styles */
+.react-international-phone-input-container .react-international-phone-input {
+  padding-left: 0.75rem; /* px-3 equivalent */
+  font-size: 0.875rem; /* text-sm equivalent */
+  width: 100%;
+  border-width: 1px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Focus state - matching shadcn UI focus ring */
+.react-international-phone-input:focus,
+.react-international-phone-input:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--ring));
+}
+
+/* Placeholder color */
+.react-international-phone-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Country selector dropdown shadow and animation */
+.react-international-phone-country-selector-dropdown {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: dropdownFadeIn 0.2s ease-out;
+  z-index: 50;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover and active states for better interaction */
+.react-international-phone-country-selector-button:hover {
+  background-color: hsl(var(--muted));
+}
+
+.react-international-phone-country-selector-button:active {
+  background-color: hsl(var(--accent));
+}

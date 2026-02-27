@@ -1,0 +1,248 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(36, 36, 36);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(36, 36, 36);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(36, 36, 36);
+  --primary: rgb(0, 149, 133);
+  --primary-foreground: rgb(240, 253, 250);
+  --secondary: rgb(247, 247, 247);
+  --secondary-foreground: rgb(54, 54, 54);
+  --muted: rgb(247, 247, 247);
+  --muted-foreground: rgb(141, 141, 141);
+  --accent: rgb(247, 247, 247);
+  --accent-foreground: rgb(54, 54, 54);
+  --destructive: rgb(220, 38, 38);
+  --destructive-foreground: rgb(220, 38, 38);
+  --border: rgb(235, 235, 235);
+  --input: rgb(222, 222, 222);
+  --ring: rgb(222, 222, 222);
+  --chart-1: rgb(230, 126, 34);
+  --chart-2: rgb(41, 128, 185);
+  --chart-3: rgb(46, 64, 183);
+  --chart-4: rgb(241, 196, 15);
+  --chart-5: rgb(231, 76, 60);
+  --radius: 0.625rem;
+  --sidebar: rgb(251, 251, 251);
+  --sidebar-foreground: rgb(94, 94, 94);
+  --sidebar-primary: rgb(54, 54, 54);
+  --sidebar-primary-foreground: rgb(251, 251, 251);
+  --sidebar-accent: rgb(247, 247, 247);
+  --sidebar-accent-foreground: rgb(54, 54, 54);
+  --sidebar-border: rgb(235, 235, 235);
+  --sidebar-ring: rgb(222, 222, 222);
+}
+.dark {
+  --background: rgb(27 23 24);
+  --foreground: rgb(250 250 250);
+  --card: rgb(27 23 24);
+  --card-foreground: rgb(250 250 250);
+  --popover: rgb(27 23 24);
+  --popover-foreground: rgb(250 250 250);
+  --primary: rgb(0 153 102);
+  --primary-foreground: rgb(236 253 245);
+  --secondary: rgb(42 38 39);
+  --secondary-foreground: rgb(250 250 250);
+  --muted: rgb(35 31 32);
+  --muted-foreground: rgb(159 159 169);
+  --accent: rgb(35 31 32);
+  --accent-foreground: rgb(250 250 250);
+  --destructive: rgb(251 44 54);
+  --destructive-foreground: rgb(251 44 54);
+  --border: rgb(47 42 43);
+  --input: rgb(47 42 43);
+  --ring: rgb(82 82 92);
+  --chart-1: rgb(20 71 230);
+  --chart-2: rgb(0 188 125);
+  --chart-3: rgb(254 154 0);
+  --chart-4: rgb(173 70 255);
+  --chart-5: rgb(255 32 86);
+  --sidebar: rgb(35 31 32);
+  --sidebar-foreground: rgb(245 244 244);
+  --sidebar-primary: rgb(0 153 102);
+  --sidebar-primary-foreground: rgb(255 255 255);
+  --sidebar-accent: rgb(42 38 39);
+  --sidebar-accent-foreground: rgb(245 244 244);
+  --sidebar-border: rgb(42 38 39);
+  --sidebar-ring: rgb(82 82 92);
+}
+@theme inline {
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-zinc-200, currentColor);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* globals.css or your main CSS file */
+
+/* Light mode scrollbar */
+:root {
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+[data-theme="dark"] {
+  --scrollbar-track: #2d2d2d;
+  --scrollbar-thumb: #555555;
+  --scrollbar-thumb-hover: #777777;
+}
+
+/* Alternative if using class-based dark mode */
+.dark {
+  --scrollbar-track: #1a1a1a;
+  --scrollbar-thumb: #4a4a4a;
+  --scrollbar-thumb-hover: #6a6a6a;
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Custom scrollbar for specific containers */
+.custom-scroll {
+  overflow-y: auto;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality (if needed) */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.searchable-dropdown-content {
+  pointer-events: auto !important;
+}
+
+/* Ensure popover has higher z-index than dialog */
+[data-radix-popover-content] {
+  z-index: 60 !important;
+}
+
+.recharts-legend-wrapper {
+  width: 100% !important;
+}
