@@ -9,7 +9,9 @@ export async function executeGraphQLBackend<T = any>(query: string, variables?: 
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`GraphQL HTTP error! status: ${response.status}, message: ${errorText}`);
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
     }
 
     const result = await response.json();
