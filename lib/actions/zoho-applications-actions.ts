@@ -5,7 +5,7 @@ import { ZohoApplication } from "@/types/types";
 const CREATE_WEBHOOK_URL = "https://automation.sayainternational.com/webhook/create-application";
 const UPDATE_WEBHOOK_URL = "";
 const DELETE_WEBHOOK_URL = ""; // Reusing student delete webhook as no specific one was provided
-const UPLOAD_ATTACHMENT_WEBHOOK_URL = "https://automation.sitconnect.net/webhook/58e479b5-ea43-42ee-abdd-b50815dfa4d9";
+const UPLOAD_ATTACHMENT_WEBHOOK_URL = "https://automation.sayainternational.com/webhook/58e479b5-ea43-42ee-abdd-b50815dfa4d9";
 const DOWNLOAD_ATTACHMENT_WEBHOOK_URL = "https://automation.sitconnect.net/webhook/13eca8cf-8742-4351-9ae6-eaace4fa10ce";
 /**
  * Create application via n8n webhook
