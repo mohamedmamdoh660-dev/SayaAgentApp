@@ -1,6 +1,17 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
+let resend: Resend | null = null;
+
+function getResendClient(): Resend {
+  if (!resend) {
+    const apiKey = process.env.NEXT_PUBLIC_RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('NEXT_PUBLIC_RESEND_API_KEY is not configured');
+    }
+    resend = new Resend(apiKey);
+  }
+  return resend;
+}
 
 interface EmailOptions {
   to: string;
@@ -11,7 +22,7 @@ interface EmailOptions {
 export const emailService = {
   sendEmail: async ({ to, subject, html }: EmailOptions) => {
     try {
-      const data = await resend.emails.send({
+      const data = await getResendClient().emails.send({
         from: process.env.NEXT_PUBLIC_EMAIL_FROM!,
         to,
         subject,

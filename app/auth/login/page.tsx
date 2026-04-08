@@ -184,7 +184,7 @@ export default function Login() {
           <p className="text-center text-sm text-gray-600 dark:text-gray-400">
             Don't have an account?{" "}
             <Link
-              href="https://studyinturkiye.com/became-an-agent/"
+              href="https://sayainternational.com/became-an-agent/"
               target="_blank"
               className="text-primary hover:underline cursor-pointer"
             >

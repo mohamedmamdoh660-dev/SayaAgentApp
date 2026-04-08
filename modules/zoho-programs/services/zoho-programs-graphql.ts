@@ -115,6 +115,7 @@ export const GET_PROGRAM_BY_ID = `
           active
           active_applications
           study_years
+          final_commission
           zoho_countries {
             id
             name

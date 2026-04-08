@@ -63,6 +63,7 @@ import { saveFile } from "@/supabase/actions/save-file";
 import { useAuth } from "@/context/AuthContext";
 import { ZohoCountry } from "@/types/types";
 import { zohoProgramsService } from "@/modules/zoho-programs/services/zoho-programs-service";
+import { supabaseClient } from "@/lib/supabase-auth-client";
 import { formatFileSize } from "@/utils/format-file-size";
 import moment from "moment-timezone";
 import { getCountriesForTimezone } from "countries-and-timezones";
@@ -754,13 +755,19 @@ export default function StudentInformationForm({
     };
 
     const fetchCountries = async () => {
-      const countries = await zohoProgramsService.getCountries(
-        "",
-        0,
-        1000,
-        null
-      );
-      setContries(countries);
+      // Use Supabase REST API directly to fetch ALL countries in one request
+      // (GraphQL pg_graphql has max_rows=30 limit which requires many paginated calls)
+      const { data, error } = await supabaseClient
+        .from('zoho_countries')
+        .select('id, name, active_on_nationalities, active_on_university')
+        .order('name', { ascending: true });
+
+      if (error) {
+        console.error('Error fetching countries:', error);
+        return;
+      }
+
+      setContries((data || []) as ZohoCountry[]);
     };
 
     getTimezone();

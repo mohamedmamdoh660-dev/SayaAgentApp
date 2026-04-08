@@ -253,6 +253,21 @@ export default function ProgramDetailPage() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground mb-1">
+                        Average Commission
+                      </p>
+                      <p className="font-medium">
+                        {program?.final_commission ? (
+                          <>
+                            {new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Number(program.final_commission))}{" "}
+                            {program.tuition_currency || ""}
+                          </>
+                        ) : (
+                          "0"
+                        )}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground mb-1">
                         Status
                       </p>
                       {program.active_applications ? (
